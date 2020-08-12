@@ -9,7 +9,7 @@
       v-model="todo.completed"
       @change="markCompleted"
     >
-      {{ todo.item }}
+      {{ todo.title }}
     </b-form-checkbox>
   </div>
 </template>

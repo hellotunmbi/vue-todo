@@ -1,7 +1,11 @@
 <template>
-  <div>
+  <div class="addtodo">
     <b-form inline @submit="addTask">
-      <b-form-input placeholder="Add a task" v-model="item"></b-form-input>
+      <b-form-input
+        placeholder="Add a task"
+        v-model="title"
+        class="addtodo_input"
+      ></b-form-input>
       <b-button variant="primary" type="submit">Save</b-button>
     </b-form>
   </div>
@@ -12,7 +16,7 @@ export default {
   name: "AddTodo",
   data() {
     return {
-      item: "",
+      title: "",
     };
   },
   methods: {
@@ -22,15 +26,23 @@ export default {
       //emit the add-todo event...
       this.$emit("add-todo", {
         id: Math.floor(1000 + Math.random() * 9000),
-        item: this.item,
+        title: this.title,
         completed: false,
       });
 
       //clear the field...
-      this.item = "";
+      this.title = "";
     },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.addtodo {
+  display: flex;
+}
+
+.addtodo_input {
+  margin-right: 0.5rem;
+}
+</style>
